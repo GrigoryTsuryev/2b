@@ -38,15 +38,10 @@ public class ManagerServiceImpl  implements  IManagerService, ITaskService {
 
     @Override
     public List<Report> findReportsByManager(long managerId) {
-
         Manager manager = managerRepository.findById(managerId).get();
         if (manager == null)
             throw new IllegalArgumentException("Manager doest exist");
-        List<Long> employeeIds = manager.getEmployees()
-                .stream().map(Employee::getEmployeeId).collect(Collectors.toList());
-        List<Employee> employees = employeeRepository.findByEmployeeIdIn(employeeIds);
-        return employees
-                .stream()
+        return manager.getEmployees().stream()
                 .map(Employee::getReports)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
