@@ -6,6 +6,8 @@ import com.app.tobeprecise.entities.Task;
 import com.app.tobeprecise.interfaces.IManagerService;
 import com.app.tobeprecise.interfaces.ITaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,19 +23,19 @@ public class ManagerController {
     private ITaskService taskService;
 
     @PostMapping(path = "save")
-    public Manager save(@RequestBody Manager manager){
-        return  managerService.save(manager);
+    public ResponseEntity<Manager> save(@RequestBody Manager manager){
+        return new ResponseEntity<>(managerService.save(manager), HttpStatus.CREATED);
     }
 
 
     @PostMapping("{managerId}/employees/{employeeId}/tasks")
-    public Task save(@RequestBody Task task, @PathVariable long employeeId, @PathVariable long managerId){
-        return  taskService.createTask(managerId, employeeId,task);
+    public ResponseEntity<Task> save(@RequestBody Task task, @PathVariable long employeeId, @PathVariable long managerId){
+        return new ResponseEntity<>(taskService.createTask(managerId, employeeId, task), HttpStatus.CREATED);
     }
 
-    @GetMapping("{managerId}//reports")
-    public List<Report> findReportsByManager(@PathVariable long managerId){
-        return managerService.findReportsByManager(managerId);
+    @GetMapping("{managerId}/reports")
+    public ResponseEntity<List<Report>> findReportsByManager(@PathVariable long managerId){
+        return new ResponseEntity<>(managerService.findReportsByManager(managerId), HttpStatus.OK);
     }
 
 

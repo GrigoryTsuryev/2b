@@ -7,8 +7,9 @@ import com.app.tobeprecise.entities.Task;
 import com.app.tobeprecise.interfaces.IEmployeeService;
 import com.app.tobeprecise.interfaces.IOverloadedService;
 import com.app.tobeprecise.interfaces.IRelationshipManagementService;
-import com.app.tobeprecise.interfaces.ITaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,28 +29,28 @@ public class EmployeeController {
     private IOverloadedService overloadedService;
 
     @PostMapping(path = "save")
-    public Employee save(@RequestBody Employee employee){
-        return  employeeService.save(employee);
+    public ResponseEntity<Employee> save(@RequestBody Employee employee){
+        return new ResponseEntity<>(employeeService.save(employee), HttpStatus.CREATED);
     }
 
     @PostMapping("{employeeId}/report")
-    public Report createReport(@RequestBody Report report, @PathVariable long employeeId){
-        return employeeService.createReport(employeeId, report);
+    public ResponseEntity<Report> createReport(@RequestBody Report report, @PathVariable long employeeId){
+        return new ResponseEntity<>(employeeService.createReport(employeeId, report), HttpStatus.CREATED);
     }
 
     @PostMapping("relationship/assign")
-    public Employee assign(@RequestParam long managerId, @RequestParam long employeeId){
-        return relationshipManagementService.assignEmployeeToManager(managerId, employeeId);
+    public ResponseEntity<Employee> assign(@RequestParam long managerId, @RequestParam long employeeId){
+        return new ResponseEntity<>(relationshipManagementService.assignEmployeeToManager(managerId, employeeId), HttpStatus.OK);
     }
 
     @GetMapping("{employeeId}/tasks")
-    public List<Task> getTasksByEmployeeId(@PathVariable long employeeId){
-        return employeeService.findTasksByEmployeeId( employeeId);
+    public ResponseEntity<List<Task>> getTasksByEmployeeId(@PathVariable long employeeId){
+        return new ResponseEntity<>(employeeService.findTasksByEmployeeId( employeeId), HttpStatus.OK);
     }
 
     @GetMapping("overloaded")
-    public List<Employee> getOverloadedEmployees(){
-        return overloadedService.findOverloadedEmployeesPerManager();
+    public ResponseEntity<List<Employee>> getOverloadedEmployees(){
+        return new ResponseEntity<>(overloadedService.findOverloadedEmployeesPerManager(), HttpStatus.OK);
     }
 
 
