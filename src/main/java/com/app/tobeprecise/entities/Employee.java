@@ -1,6 +1,7 @@
 package com.app.tobeprecise.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -86,17 +87,7 @@ public class Employee  {
         this.tasks = tasks;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "employeeId=" + employeeId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", manager=" + manager +
-                ", reports=" + reports +
-                ", tasks=" + tasks +
-                '}';
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -113,4 +104,12 @@ public class Employee  {
         return tasks != null ? tasks.equals(employee.tasks) : employee.tasks == null;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }

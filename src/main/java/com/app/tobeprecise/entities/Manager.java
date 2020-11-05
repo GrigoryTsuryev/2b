@@ -2,6 +2,7 @@ package com.app.tobeprecise.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -24,7 +25,7 @@ public class Manager  {
     @NotBlank
     private String lastName;
 
-    @OneToMany(mappedBy="manager", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="manager", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Employee> employees;
 
     public String getFirstName() {
@@ -56,16 +57,6 @@ public class Manager  {
     }
 
     @Override
-    public String toString() {
-        return "Manager{" +
-                "managerId=" + managerId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", employees=" + employees +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -78,4 +69,13 @@ public class Manager  {
         return employees != null ? employees.equals(manager.employees) : manager.employees == null;
     }
 
+
+    @Override
+    public String toString() {
+        return "Manager{" +
+                "managerId=" + managerId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }

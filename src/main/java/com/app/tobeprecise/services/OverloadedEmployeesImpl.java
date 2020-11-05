@@ -26,7 +26,7 @@ public class OverloadedEmployeesImpl implements IOverloadedService {
     @Override
     public List<Employee> findOverloadedEmployeesPerManager() {
         Map<Employee, List<Task>> tasksPerEmployee = StreamSupport.stream(employeeRepository.findAll().spliterator(), false)
-                .filter(employee -> employee.getTasks().isEmpty())
+                .filter(employee -> !employee.getTasks().isEmpty())
                 .collect(Collectors.toMap(Function.identity(), Employee::getTasks));
         double[] amountOfTasksPerEmployee = tasksPerEmployee
                 .values()

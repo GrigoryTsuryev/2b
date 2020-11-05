@@ -20,8 +20,6 @@ public class EmployeeController {
     @Autowired
     private IEmployeeService employeeService;
 
-    @Autowired
-    private ITaskService taskService;
 
     @Autowired
     private IRelationshipManagementService relationshipManagementService;
