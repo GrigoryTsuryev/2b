@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -25,6 +26,7 @@ public class OverloadedEmployeesImpl implements IOverloadedService {
     @Override
     public List<Employee> findOverloadedEmployeesPerManager() {
         Map<Employee, List<Task>> tasksPerEmployee = StreamSupport.stream(employeeRepository.findAll().spliterator(), false)
+                .filter(employee -> employee.getTasks().isEmpty())
                 .collect(Collectors.toMap(Function.identity(), Employee::getTasks));
         double[] amountOfTasksPerEmployee = tasksPerEmployee
                 .values()

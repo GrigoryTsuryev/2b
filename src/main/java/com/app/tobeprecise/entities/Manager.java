@@ -24,7 +24,7 @@ public class Manager  {
     @NotBlank
     private String lastName;
 
-    @OneToMany(mappedBy="manager", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="manager", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Employee> employees;
 
     public String getFirstName() {
