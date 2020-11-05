@@ -26,7 +26,7 @@ public class Employee  {
     @NotBlank
     private String lastName;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch= FetchType.EAGER)
     @JoinColumn(name = "manager_id")
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Manager manager;
