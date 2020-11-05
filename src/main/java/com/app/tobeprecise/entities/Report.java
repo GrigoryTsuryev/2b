@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "reports")
-public class Report implements Serializable {
+public class Report  {
 
     @Id
     @GeneratedValue

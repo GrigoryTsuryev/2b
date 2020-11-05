@@ -12,13 +12,13 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "tasks")
-public class Task implements Serializable {
+public class Task  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long taskId;
 
-    @Column(name = "text", nullable = false)
+    @Column(name = "text")
     @NotBlank
     private String text;
 

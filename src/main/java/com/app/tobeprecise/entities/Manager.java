@@ -15,7 +15,7 @@ import java.util.Set;
 @Entity
 @Table(name = "managers")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Manager implements Serializable {
+public class Manager  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
