@@ -1,7 +1,6 @@
 package com.app.tobeprecise.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -27,7 +26,7 @@ public class Employee  {
     @NotBlank
     private String lastName;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch= FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
     @JoinColumn(name = "manager_id")
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Manager manager;
