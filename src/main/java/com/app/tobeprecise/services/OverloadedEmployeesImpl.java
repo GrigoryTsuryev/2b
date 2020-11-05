@@ -1,6 +1,7 @@
 package com.app.tobeprecise.services;
 
 import com.app.tobeprecise.entities.Employee;
+import com.app.tobeprecise.entities.Task;
 import com.app.tobeprecise.interfaces.IOverloadedService;
 import com.app.tobeprecise.repos.EmployeeRepository;
 import com.app.tobeprecise.repos.TaskRepository;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.*;
 
 @Service
@@ -24,14 +26,20 @@ public class OverloadedEmployeesImpl implements IOverloadedService {
 
     @Override
     public List<Employee> findOverloadedEmployeesPerManager() {
-        double[] tasksPerEmployee1 = StreamSupport.stream(employeeRepository.findAll().spliterator(), false)
-                .map(task -> Double.valueOf(Long.toString(task.getTasks().size())))
-                .mapToDouble(Double::doubleValue).toArray();
-        double average = Arrays.stream(tasksPerEmployee1).average().getAsDouble();
-        double standardDeviation = MathUtils.calculateStandardDeviation(tasksPerEmployee1);
+        Map<Employee, List<Task>> tasksPerEmployee = StreamSupport.stream(employeeRepository.findAll().spliterator(), false)
+                .collect(Collectors.toMap(Function.identity(), Employee::getTasks));
+        double[] amountOfTasksPerEmployee = tasksPerEmployee
+                .values()
+                .stream()
+                .map(List::size)
+                .mapToDouble(Integer::doubleValue)
+                .toArray();
+        double average = Arrays.stream(amountOfTasksPerEmployee).average().getAsDouble();
+        double standardDeviation = MathUtils.calculateStandardDeviation(amountOfTasksPerEmployee);
         double overload = average + standardDeviation;
-        return StreamSupport.stream(employeeRepository.findAll().spliterator(), false)
-                .filter(employee -> employee.getTasks().size() > overload)
+        return tasksPerEmployee.entrySet().stream()
+                .filter(el->el.getValue().size()>overload)
+                .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
 
