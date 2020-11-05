@@ -36,9 +36,7 @@ public class OverloadedEmployeesImpl implements IOverloadedService {
                 .mapToDouble(Integer::doubleValue)
                 .toArray();
         if (amountOfTasksPerEmployee.length == 0) return Collections.emptyList();
-        double average = Arrays.stream(amountOfTasksPerEmployee).average().getAsDouble();
-        double standardDeviation = MathUtils.calculateStandardDeviation(amountOfTasksPerEmployee);
-        double overload = average + standardDeviation;
+        double overload = MathUtils.calculateOverload(amountOfTasksPerEmployee);
         return tasksPerEmployee.entrySet().stream()
                 .filter(el->el.getValue().size()>overload)
                 .map(Map.Entry::getKey)
