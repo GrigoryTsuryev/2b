@@ -4,24 +4,22 @@ import com.app.tobeprecise.entities.Employee;
 import com.app.tobeprecise.entities.Task;
 import com.app.tobeprecise.interfaces.IOverloadedService;
 import com.app.tobeprecise.repos.EmployeeRepository;
-import com.app.tobeprecise.repos.TaskRepository;
 import com.app.tobeprecise.utils.MathUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class OverloadedEmployeesImpl implements IOverloadedService {
 
     @Autowired
-    private TaskRepository taskRepository;
-
-    @Autowired
     private EmployeeRepository employeeRepository;
-
 
 
     @Override
