@@ -1,3 +1,7 @@
+DELETE from reports;
+DELETE from tasks;
+Delete from employees;
+Delete from managers;
 insert into managers (manager_id, first_name, last_name) values (1, 'Manager1', 'Manager1');
 insert into managers (manager_id, first_name, last_name) values (2, 'Manager2', 'Manager2');
 insert into managers (manager_id, first_name, last_name) values (3, 'Manager3', 'Manager3');
@@ -40,64 +44,63 @@ insert into reports (report_id, date, text, employee_id) values (37, '2012-12-12
 insert into reports (report_id, date, text, employee_id) values (38, '2012-12-12', 'text26', 12);
 insert into reports (report_id, date, text, employee_id) values (39, '2012-12-12', 'text27', 12);
 
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (40, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (41, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (42, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (43, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (44, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (45, '2012-09-09', '2012-12-12','text28', 5)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (46, '2012-09-09', '2012-12-12','text28', 5)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (47, '2012-09-09', '2012-12-12','text28', 5)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (48, '2012-09-09', '2012-12-12','text28', 5)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (49, '2012-09-09', '2012-12-12','text28', 5)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (50, '2012-09-09', '2012-12-12','text28', 6)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (51, '2012-09-09', '2012-12-12','text28', 6)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (52, '2012-09-09', '2012-12-12','text28', 6)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (53, '2012-09-09', '2012-12-12','text28', 6)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (54, '2012-09-09', '2012-12-12','text28', 6)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (55, '2012-09-09', '2012-12-12','text28', 7)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (56, '2012-09-09', '2012-12-12','text28', 7)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (57, '2012-09-09', '2012-12-12','text28', 7)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (58, '2012-09-09', '2012-12-12','text28', 7)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (59, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (60, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (61, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (62, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (63, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (64, '2012-09-09', '2012-12-12','text28', 9)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (65, '2012-09-09', '2012-12-12','text28', 9)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (66, '2012-09-09', '2012-12-12','text28', 9)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (67, '2012-09-09', '2012-12-12','text28', 9)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (68, '2012-09-09', '2012-12-12','text28', 10)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (69, '2012-09-09', '2012-12-12','text28', 10)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (70, '2012-09-09', '2012-12-12','text28', 10)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (71, '2012-09-09', '2012-12-12','text28', 10)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (72, '2012-09-09', '2012-12-12','text28', 11)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (73, '2012-09-09', '2012-12-12','text28', 11)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (74, '2012-09-09', '2012-12-12','text28', 11)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (75, '2012-09-09', '2012-12-12','text28', 11)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (76, '2012-09-09', '2012-12-12','text28', 11)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (77, '2012-09-09', '2012-12-12','text28', 12)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (78, '2012-09-09', '2012-12-12','text28', 12)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (79, '2012-09-09', '2012-12-12','text28', 12)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (80, '2012-09-09', '2012-12-12','text28', 12)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (81, '2012-09-09', '2012-12-12','text28', 12)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (82, '2012-09-09', '2012-12-12','text28', 12)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (83, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (84, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (85, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (86, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (87, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (88, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (89, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (90, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (91, '2012-09-09', '2012-12-12','text28', 4)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (92, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (93, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (94, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (95, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (96, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (97, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (98, '2012-09-09', '2012-12-12','text28', 8)
-insert into tasks (task_id, assign_date, due_date, text, employee_id) values (99, '2012-09-09', '2012-12-12','text28', 8)
-
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (40, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (41, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (42, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (43, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (44, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (45, '2012-09-09', '2012-12-12','text28', 5);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (46, '2012-09-09', '2012-12-12','text28', 5);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (47, '2012-09-09', '2012-12-12','text28', 5);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (48, '2012-09-09', '2012-12-12','text28', 5);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (49, '2012-09-09', '2012-12-12','text28', 5);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (50, '2012-09-09', '2012-12-12','text28', 6);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (51, '2012-09-09', '2012-12-12','text28', 6);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (52, '2012-09-09', '2012-12-12','text28', 6);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (53, '2012-09-09', '2012-12-12','text28', 6);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (54, '2012-09-09', '2012-12-12','text28', 6);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (55, '2012-09-09', '2012-12-12','text28', 7);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (56, '2012-09-09', '2012-12-12','text28', 7);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (57, '2012-09-09', '2012-12-12','text28', 7);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (58, '2012-09-09', '2012-12-12','text28', 7);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (59, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (60, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (61, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (62, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (63, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (64, '2012-09-09', '2012-12-12','text28', 9);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (65, '2012-09-09', '2012-12-12','text28', 9);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (66, '2012-09-09', '2012-12-12','text28', 9);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (67, '2012-09-09', '2012-12-12','text28', 9);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (68, '2012-09-09', '2012-12-12','text28', 10);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (69, '2012-09-09', '2012-12-12','text28', 10);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (70, '2012-09-09', '2012-12-12','text28', 10);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (71, '2012-09-09', '2012-12-12','text28', 10);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (72, '2012-09-09', '2012-12-12','text28', 11);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (73, '2012-09-09', '2012-12-12','text28', 11);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (74, '2012-09-09', '2012-12-12','text28', 11);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (75, '2012-09-09', '2012-12-12','text28', 11);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (76, '2012-09-09', '2012-12-12','text28', 11);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (77, '2012-09-09', '2012-12-12','text28', 12);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (78, '2012-09-09', '2012-12-12','text28', 12);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (79, '2012-09-09', '2012-12-12','text28', 12);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (80, '2012-09-09', '2012-12-12','text28', 12);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (81, '2012-09-09', '2012-12-12','text28', 12);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (82, '2012-09-09', '2012-12-12','text28', 12);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (83, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (84, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (85, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (86, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (87, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (88, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (89, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (90, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (91, '2012-09-09', '2012-12-12','text28', 4);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (92, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (93, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (94, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (95, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (96, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (97, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (98, '2012-09-09', '2012-12-12','text28', 8);
+insert into tasks (task_id, assign_date, due_date, text, employee_id) values (99, '2012-09-09', '2012-12-12','text28', 8);

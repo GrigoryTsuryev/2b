@@ -9,11 +9,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "managers")
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Manager  {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long managerId;
 
     @Column(name = "first_name", nullable = false)
@@ -25,6 +24,7 @@ public class Manager  {
     private String lastName;
 
     @OneToMany(mappedBy="manager", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Set<Employee> employees;
 
     public String getFirstName() {
@@ -76,5 +76,14 @@ public class Manager  {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int result = managerId != null ? managerId.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (employees != null ? employees.hashCode() : 0);
+        return result;
     }
 }
