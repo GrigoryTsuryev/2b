@@ -34,7 +34,6 @@ public class OverloadedEmployeesImpl implements IOverloadedService {
                 .map(List::size)
                 .mapToDouble(Integer::doubleValue)
                 .toArray();
-        if (amountOfTasksPerEmployee.length == 0) return Collections.emptyList();
         double overload = MathUtils.calculateOverload(amountOfTasksPerEmployee);
         return tasksPerEmployee.entrySet().stream()
                 .filter(el->el.getValue().size()>overload)
