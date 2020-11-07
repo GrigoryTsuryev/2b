@@ -3,15 +3,21 @@ package com.app.tobeprecise.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.source.doctree.SerialDataTree;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "tasks")
-public class Task  {
+@EqualsAndHashCode
+@ToString
+public class Task implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -72,38 +78,4 @@ public class Task  {
         this.employee = employee;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "taskId=" + taskId +
-                ", text='" + text + '\'' +
-                ", assignDate=" + assignDate +
-                ", dueDate=" + dueDate +
-                ", employee=" + employee +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Task task = (Task) o;
-
-        if (taskId != null ? !taskId.equals(task.taskId) : task.taskId != null) return false;
-        if (text != null ? !text.equals(task.text) : task.text != null) return false;
-        if (assignDate != null ? !assignDate.equals(task.assignDate) : task.assignDate != null) return false;
-        if (dueDate != null ? !dueDate.equals(task.dueDate) : task.dueDate != null) return false;
-        return employee != null ? employee.equals(task.employee) : task.employee == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = taskId != null ? taskId.hashCode() : 0;
-        result = 31 * result + (text != null ? text.hashCode() : 0);
-        result = 31 * result + (assignDate != null ? assignDate.hashCode() : 0);
-        result = 31 * result + (dueDate != null ? dueDate.hashCode() : 0);
-        result = 31 * result + (employee != null ? employee.hashCode() : 0);
-        return result;
-    }
 }

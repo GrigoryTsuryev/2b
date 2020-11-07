@@ -2,14 +2,17 @@ package com.app.tobeprecise.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "managers")
-public class Manager  {
+@ToString
+public class Manager implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +28,7 @@ public class Manager  {
 
     @OneToMany(mappedBy="manager", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonIgnore
     private Set<Employee> employees;
 
     public String getFirstName() {
@@ -46,7 +50,7 @@ public class Manager  {
     public Long getManagerId() {
         return managerId;
     }
-    @JsonIgnore
+
     public Set<Employee> getEmployees() {
         return employees;
     }
@@ -64,18 +68,7 @@ public class Manager  {
 
         if (managerId != null ? !managerId.equals(manager.managerId) : manager.managerId != null) return false;
         if (firstName != null ? !firstName.equals(manager.firstName) : manager.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(manager.lastName) : manager.lastName != null) return false;
-        return employees != null ? employees.equals(manager.employees) : manager.employees == null;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Manager{" +
-                "managerId=" + managerId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return lastName != null ? lastName.equals(manager.lastName) : manager.lastName == null;
     }
 
     @Override
@@ -83,7 +76,6 @@ public class Manager  {
         int result = managerId != null ? managerId.hashCode() : 0;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (employees != null ? employees.hashCode() : 0);
         return result;
     }
 }
