@@ -36,9 +36,7 @@ public class EmployeeServiceImpl implements IEmployeeService, IRelationshipManag
     @Override
     public Employee assignEmployeeToManager(long managerId, long employeeId){
         Employee employee = employeeRepository.findById(employeeId).get();
-        if(employee == null) throw new IllegalArgumentException("Employee with Id " + employeeId + " doesn't exist");
         Manager manager = managerRepository.findById(managerId).get();
-        if(manager == null) throw new IllegalArgumentException("Manager with Id " + managerId + " doesn't exist");
         employee.setManager(manager);
         return employeeRepository.save(employee);
     }
@@ -46,7 +44,6 @@ public class EmployeeServiceImpl implements IEmployeeService, IRelationshipManag
     @Override
     public Report createReport(long id, Report report) {
         Employee employee = employeeRepository.findById(id).get();
-        if (employee == null) throw new IllegalArgumentException("Employee with Id " + id + " doesn't exist");
         report.setEmployee(employee);
         return reportRepository.save(report);
     }
@@ -54,7 +51,6 @@ public class EmployeeServiceImpl implements IEmployeeService, IRelationshipManag
     @Override
     public List<Task> findTasksByEmployeeId(long employeeId) {
         Employee employee = employeeRepository.findById(employeeId).get();
-        if (employee == null) throw new IllegalArgumentException("Employee with Id " + employeeId + " doesn't exist");
         return new ArrayList<>(employee.getTasks());
     }
 

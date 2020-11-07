@@ -39,8 +39,6 @@ public class ManagerServiceImpl  implements  IManagerService, ITaskService {
     @Override
     public List<Report> findReportsByManager(long managerId) {
         Manager manager = managerRepository.findById(managerId).get();
-        if (manager == null)
-            throw new IllegalArgumentException("Manager doest exist");
         return manager.getEmployees().stream()
                 .map(Employee::getReports)
                 .flatMap(List::stream)
@@ -50,7 +48,6 @@ public class ManagerServiceImpl  implements  IManagerService, ITaskService {
     @Override
     public Task createTask(long managerId, long employeeId, Task task) {
         Employee employee = employeeRepository.findById(employeeId).get();
-        if (employee == null) throw new IllegalArgumentException("Employee with Id " + employeeId + " doesn't exist");
         if(employee.getManager().getManagerId() != managerId)
             throw new IllegalArgumentException("Manager is not assigned for this Employee");
         if(task.getAssignDate().compareTo(task.getDueDate()) > 0){
