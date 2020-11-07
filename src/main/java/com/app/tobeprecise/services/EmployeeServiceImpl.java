@@ -10,7 +10,6 @@ import com.app.tobeprecise.interfaces.IRelationshipManagementService;
 import com.app.tobeprecise.repos.EmployeeRepository;
 import com.app.tobeprecise.repos.ManagerRepository;
 import com.app.tobeprecise.repos.ReportRepository;
-import com.app.tobeprecise.repos.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +24,6 @@ public class EmployeeServiceImpl implements IEmployeeService, IRelationshipManag
 
     @Autowired
     private ReportRepository reportRepository;
-
-    @Autowired
-    private TaskRepository taskRepository;
 
     @Autowired
     private ManagerRepository managerRepository;
