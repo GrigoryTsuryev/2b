@@ -1,19 +1,18 @@
 package com.app.tobeprecise.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "employees")
 @ToString
-public class Employee  implements Serializable {
+public class Employee  {
 
 
     @Id
@@ -31,14 +30,17 @@ public class Employee  implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL, fetch= FetchType.EAGER)
     @JoinColumn(name = "manager_id")
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonIgnore
     private Manager manager;
 
     @OneToMany(mappedBy="employee", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonIgnore
     private List<Report> reports;
 
     @OneToMany(mappedBy="employee", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonIgnore
     private List<Task> tasks;
 
     public String getFirstName() {

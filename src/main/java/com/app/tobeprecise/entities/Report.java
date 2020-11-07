@@ -9,14 +9,13 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "reports")
 @EqualsAndHashCode
 @ToString
-public class Report  implements Serializable {
+public class Report   {
 
     @Id
     @GeneratedValue

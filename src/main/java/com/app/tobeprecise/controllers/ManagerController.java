@@ -1,7 +1,9 @@
 package com.app.tobeprecise.controllers;
 
+import com.app.tobeprecise.dtos.ManagerDTO;
+import com.app.tobeprecise.dtos.ReportDTO;
+import com.app.tobeprecise.dtos.TaskDTO;
 import com.app.tobeprecise.entities.Manager;
-import com.app.tobeprecise.entities.Report;
 import com.app.tobeprecise.entities.Task;
 import com.app.tobeprecise.interfaces.IManagerService;
 import com.app.tobeprecise.interfaces.ITaskService;
@@ -16,25 +18,28 @@ import java.util.List;
 @RequestMapping("managers")
 public class ManagerController {
 
-    @Autowired
     private IManagerService managerService;
-
-    @Autowired
     private ITaskService taskService;
 
-    @PostMapping(path = "save")
-    public ResponseEntity<Manager> save(@RequestBody Manager manager){
+    @Autowired
+    public ManagerController(IManagerService managerService, ITaskService taskService) {
+        this.managerService = managerService;
+        this.taskService = taskService;
+    }
+
+    @PostMapping("save")
+    public ResponseEntity<ManagerDTO> save(@RequestBody Manager manager){
         return new ResponseEntity<>(managerService.save(manager), HttpStatus.CREATED);
     }
 
 
     @PostMapping("{managerId}/employees/{employeeId}/tasks")
-    public ResponseEntity<Task> save(@RequestBody Task task, @PathVariable long employeeId, @PathVariable long managerId){
+    public ResponseEntity<TaskDTO> save(@RequestBody Task task, @PathVariable long employeeId, @PathVariable long managerId){
         return new ResponseEntity<>(taskService.createTask(managerId, employeeId, task), HttpStatus.CREATED);
     }
 
     @GetMapping("{managerId}/reports")
-    public ResponseEntity<List<Report>> findReportsByManager(@PathVariable long managerId){
+    public ResponseEntity<List<ReportDTO>> findReportsByManager(@PathVariable long managerId){
         return new ResponseEntity<>(managerService.findReportsByManager(managerId), HttpStatus.OK);
     }
 

@@ -1,9 +1,12 @@
 package com.app.tobeprecise.controllers;
 
 
+import com.app.tobeprecise.dtos.EmployeeDTO;
+import com.app.tobeprecise.dtos.EmployeeManagerDTO;
+import com.app.tobeprecise.dtos.ReportDTO;
+import com.app.tobeprecise.dtos.TaskDTO;
 import com.app.tobeprecise.entities.Employee;
 import com.app.tobeprecise.entities.Report;
-import com.app.tobeprecise.entities.Task;
 import com.app.tobeprecise.interfaces.IEmployeeService;
 import com.app.tobeprecise.interfaces.IOverloadedService;
 import com.app.tobeprecise.interfaces.IRelationshipManagementService;
@@ -18,38 +21,42 @@ import java.util.List;
 @RequestMapping("employees")
 public class EmployeeController {
 
-    @Autowired
+
     private IEmployeeService employeeService;
 
-
-    @Autowired
     private IRelationshipManagementService relationshipManagementService;
 
-    @Autowired
     private IOverloadedService overloadedService;
 
+    @Autowired
+    public EmployeeController(IEmployeeService employeeService, IRelationshipManagementService relationshipManagementService, IOverloadedService overloadedService) {
+        this.employeeService = employeeService;
+        this.relationshipManagementService = relationshipManagementService;
+        this.overloadedService = overloadedService;
+    }
+
     @PostMapping(path = "save")
-    public ResponseEntity<Employee> save(@RequestBody Employee employee){
+    public ResponseEntity<EmployeeDTO> save(@RequestBody Employee employee){
         return new ResponseEntity<>(employeeService.save(employee), HttpStatus.CREATED);
     }
 
     @PostMapping("{employeeId}/report")
-    public ResponseEntity<Report> createReport(@RequestBody Report report, @PathVariable long employeeId){
+    public ResponseEntity<ReportDTO> createReport(@RequestBody Report report, @PathVariable long employeeId){
         return new ResponseEntity<>(employeeService.createReport(employeeId, report), HttpStatus.CREATED);
     }
 
     @PostMapping("relationship/assign")
-    public ResponseEntity<Employee> assign(@RequestParam long managerId, @RequestParam long employeeId){
+    public ResponseEntity<EmployeeManagerDTO> assign(@RequestParam long managerId, @RequestParam long employeeId){
         return new ResponseEntity<>(relationshipManagementService.assignEmployeeToManager(managerId, employeeId), HttpStatus.OK);
     }
 
     @GetMapping("{employeeId}/tasks")
-    public ResponseEntity<List<Task>> getTasksByEmployeeId(@PathVariable long employeeId){
+    public ResponseEntity<List<TaskDTO>> getTasksByEmployeeId(@PathVariable long employeeId){
         return new ResponseEntity<>(employeeService.findTasksByEmployeeId( employeeId), HttpStatus.OK);
     }
 
     @GetMapping("overloaded")
-    public ResponseEntity<List<Employee>> getOverloadedEmployees(){
+    public ResponseEntity<List<EmployeeManagerDTO>> getOverloadedEmployees(){
         return new ResponseEntity<>(overloadedService.findOverloadedEmployeesPerManager(), HttpStatus.OK);
     }
 

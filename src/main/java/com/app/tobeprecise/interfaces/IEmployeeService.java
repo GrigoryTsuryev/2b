@@ -1,19 +1,21 @@
 package com.app.tobeprecise.interfaces;
 
 
+import com.app.tobeprecise.dtos.EmployeeDTO;
+import com.app.tobeprecise.dtos.ReportDTO;
+import com.app.tobeprecise.dtos.TaskDTO;
 import com.app.tobeprecise.entities.Employee;
 import com.app.tobeprecise.entities.Report;
-import com.app.tobeprecise.entities.Task;
 
 import java.util.List;
 
 public interface IEmployeeService {
 
-    Employee save(Employee e);
+    EmployeeDTO save(Employee e);
 
-    Report createReport(long id, Report report);
+    ReportDTO createReport(long id, Report report);
 
-    List<Task> findTasksByEmployeeId(long employeeId);
+    List<TaskDTO> findTasksByEmployeeId(long employeeId);
 
 
 

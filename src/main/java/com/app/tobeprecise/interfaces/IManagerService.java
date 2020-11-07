@@ -1,13 +1,14 @@
 package com.app.tobeprecise.interfaces;
 
+import com.app.tobeprecise.dtos.ManagerDTO;
+import com.app.tobeprecise.dtos.ReportDTO;
 import com.app.tobeprecise.entities.Manager;
-import com.app.tobeprecise.entities.Report;
 
 import java.util.List;
 
 public interface IManagerService {
-    Manager save(Manager m);
+    ManagerDTO save(Manager m);
 
-    List<Report> findReportsByManager(long managerId);
+    List<ReportDTO> findReportsByManager(long managerId);
 
 }

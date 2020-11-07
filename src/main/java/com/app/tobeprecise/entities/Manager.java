@@ -6,13 +6,12 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "managers")
 @ToString
-public class Manager implements Serializable {
+public class Manager  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

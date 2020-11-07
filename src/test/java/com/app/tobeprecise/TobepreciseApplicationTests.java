@@ -50,7 +50,7 @@ class TobepreciseApplicationTests {
 				.get("/employees/overloaded")
 				.accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON);
-		mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk())
+		mockMvc.perform(requestBuilder).andExpect(status().isOk())
 				.andExpect(handler().methodName("getOverloadedEmployees"))
 				.andExpect(jsonPath("$", hasSize(2)));
 
@@ -62,7 +62,7 @@ class TobepreciseApplicationTests {
 				.get("/managers/3/reports")
 				.accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON);
-		mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk())
+		mockMvc.perform(requestBuilder).andExpect(status().isOk())
 				.andExpect(handler().methodName("findReportsByManager"))
 				.andExpect(jsonPath("$", hasSize(9)));
 	}
@@ -73,7 +73,7 @@ class TobepreciseApplicationTests {
 				.get("/employees/4/tasks")
 				.accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON);
-		mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk())
+		mockMvc.perform(requestBuilder).andExpect(status().isOk())
 				.andExpect(handler().methodName("getTasksByEmployeeId"))
 				.andExpect(jsonPath("$", hasSize(14)));
 	}

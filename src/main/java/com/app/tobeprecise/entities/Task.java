@@ -3,21 +3,19 @@ package com.app.tobeprecise.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.source.doctree.SerialDataTree;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "tasks")
 @EqualsAndHashCode
 @ToString
-public class Task implements Serializable {
+public class Task  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

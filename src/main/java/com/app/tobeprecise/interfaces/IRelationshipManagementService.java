@@ -1,10 +1,10 @@
 package com.app.tobeprecise.interfaces;
 
 
-import com.app.tobeprecise.entities.Employee;
+import com.app.tobeprecise.dtos.EmployeeManagerDTO;
 
 public interface IRelationshipManagementService {
 
-    Employee assignEmployeeToManager(long managerId, long employeeId);
+    EmployeeManagerDTO assignEmployeeToManager(long managerId, long employeeId);
 
 }
