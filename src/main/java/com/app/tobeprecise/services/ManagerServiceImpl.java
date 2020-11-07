@@ -8,7 +8,6 @@ import com.app.tobeprecise.entities.Manager;
 import com.app.tobeprecise.entities.Task;
 import com.app.tobeprecise.exeptions.ManagerNotFoundException;
 import com.app.tobeprecise.interfaces.IManagerService;
-import com.app.tobeprecise.interfaces.ITaskService;
 import com.app.tobeprecise.repos.EmployeeRepository;
 import com.app.tobeprecise.repos.ManagerRepository;
 import com.app.tobeprecise.repos.TaskRepository;
@@ -19,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ManagerServiceImpl  implements  IManagerService, ITaskService {
+public class ManagerServiceImpl  implements  IManagerService {
 
 
     private ManagerRepository managerRepository;

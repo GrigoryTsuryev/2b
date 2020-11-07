@@ -8,8 +8,6 @@ import com.app.tobeprecise.dtos.TaskDTO;
 import com.app.tobeprecise.entities.Employee;
 import com.app.tobeprecise.entities.Report;
 import com.app.tobeprecise.interfaces.IEmployeeService;
-import com.app.tobeprecise.interfaces.IOverloadedService;
-import com.app.tobeprecise.interfaces.IRelationshipManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,21 +19,10 @@ import java.util.List;
 @RequestMapping("employees")
 public class EmployeeController {
 
-
+    @Autowired
     private IEmployeeService employeeService;
 
-    private IRelationshipManagementService relationshipManagementService;
-
-    private IOverloadedService overloadedService;
-
-    @Autowired
-    public EmployeeController(IEmployeeService employeeService, IRelationshipManagementService relationshipManagementService, IOverloadedService overloadedService) {
-        this.employeeService = employeeService;
-        this.relationshipManagementService = relationshipManagementService;
-        this.overloadedService = overloadedService;
-    }
-
-    @PostMapping(path = "save")
+    @PostMapping("save")
     public ResponseEntity<EmployeeDTO> save(@RequestBody Employee employee){
         return new ResponseEntity<>(employeeService.save(employee), HttpStatus.CREATED);
     }
@@ -47,7 +34,7 @@ public class EmployeeController {
 
     @PostMapping("relationship/assign")
     public ResponseEntity<EmployeeManagerDTO> assign(@RequestParam long managerId, @RequestParam long employeeId){
-        return new ResponseEntity<>(relationshipManagementService.assignEmployeeToManager(managerId, employeeId), HttpStatus.OK);
+        return new ResponseEntity<>(employeeService.assignEmployeeToManager(managerId, employeeId), HttpStatus.OK);
     }
 
     @GetMapping("{employeeId}/tasks")
@@ -57,7 +44,7 @@ public class EmployeeController {
 
     @GetMapping("overloaded")
     public ResponseEntity<List<EmployeeManagerDTO>> getOverloadedEmployees(){
-        return new ResponseEntity<>(overloadedService.findOverloadedEmployeesPerManager(), HttpStatus.OK);
+        return new ResponseEntity<>(employeeService.findOverloadedEmployeesPerManager(), HttpStatus.OK);
     }
 
 
