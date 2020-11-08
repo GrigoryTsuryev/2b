@@ -7,7 +7,7 @@ This repository contains working code samples which demonstrate Java, Spring, Hi
 * To a manager assign a task to employee and find all tasks that were assigned to his employees, and find overloaded employees
 * To an employee create a report and find all his reports.
 
-For testing purposes data is loading on the start of application. It has 3 managers, 9 employees, amount of tasks and reports.
+For testing purposes data is loaded on the start of application. It has 3 managers, 9 employees, amount of tasks and reports.
 
 ## Using the Sample Code
 
