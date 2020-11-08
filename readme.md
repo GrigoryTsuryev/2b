@@ -1,4 +1,4 @@
-# Java Sample Code for the Interview project
+# Java Sample Code for the  Interview
 [![Travis CI Status](https://travis-ci.org/AuthorizeNet/sample-code-java.svg?branch=master)](https://travis-ci.org/AuthorizeNet/sample-code-java)
 
 This repository contains working code samples which demonstrate Java, Spring, Hibernate, Junit.
