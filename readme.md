@@ -1,7 +1,7 @@
 # Java Sample Code for the  Interview
 [![Travis CI Status](https://travis-ci.org/AuthorizeNet/sample-code-java.svg?branch=master)](https://travis-ci.org/AuthorizeNet/sample-code-java)
 
-This repository contains working code samples which demonstrate Java, Spring, Hibernate, Junit.
+This repository contains working code samples which demonstrate Java, Spring, Hibernate, Junit skills.
 
 * The app allows to create manager, employee, assign manager to employee.
 * To a manager assign a task to employee and find all tasks that were assigned to his employees, and find overloaded employees
