@@ -20,19 +20,12 @@ import java.util.stream.Collectors;
 @Service
 public class ManagerServiceImpl  implements  IManagerService {
 
-
-    private ManagerRepository managerRepository;
-
-    private EmployeeRepository employeeRepository;
-
-    private TaskRepository taskRepository;
-
     @Autowired
-    public ManagerServiceImpl(ManagerRepository managerRepository, EmployeeRepository employeeRepository, TaskRepository taskRepository) {
-        this.managerRepository = managerRepository;
-        this.employeeRepository = employeeRepository;
-        this.taskRepository = taskRepository;
-    }
+    private ManagerRepository managerRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
+    @Autowired
+    private TaskRepository taskRepository;
 
     @Override
     public ManagerDTO save(Manager m) {
