@@ -1,4 +1,4 @@
-# Java Sample Code for the  Interview
+# Java Interview
 [![Travis CI Status](https://travis-ci.org/AuthorizeNet/sample-code-java.svg?branch=master)](https://travis-ci.org/AuthorizeNet/sample-code-java)
 
 This repository contains working code samples which demonstrate Java, Spring, Hibernate, Junit skills.
@@ -18,7 +18,7 @@ You can also run each sample directly from the command line.
 ```
     $ git clone https://github.com/GrigoryTsuryev/2b.git
 ```
-* Run "mvn package" in the root directory to create an app.
+* Run "mvn clean install" in the root directory to create an app and then run it
 
 ## Following RESTs are applied
 
