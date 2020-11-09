@@ -9,6 +9,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -27,12 +28,12 @@ public class Task  {
 
     @Column(name = "assign_date", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @FutureOrPresent
+    @NotNull
     private LocalDate assignDate;
 
     @Column(name = "due_date", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @FutureOrPresent
+    @NotNull
     private LocalDate dueDate;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
