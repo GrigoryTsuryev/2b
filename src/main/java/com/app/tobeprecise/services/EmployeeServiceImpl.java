@@ -75,13 +75,13 @@ public class EmployeeServiceImpl implements IEmployeeService {
         Map<Employee, List<Task>> tasksPerEmployee = StreamSupport.stream(employeeRepository.findAll().spliterator(), false)
                 .filter(employee -> !employee.getTasks().isEmpty())
                 .collect(Collectors.toMap(Function.identity(), Employee::getTasks));
+        if(tasksPerEmployee.isEmpty()) return Collections.emptyList();
         double[] amountOfTasksPerEmployee = tasksPerEmployee
                 .values()
                 .stream()
                 .map(List::size)
                 .mapToDouble(Integer::doubleValue)
                 .toArray();
-        if (amountOfTasksPerEmployee.length == 0) return Collections.emptyList();
         double overload = MathUtils.calculateOverload(amountOfTasksPerEmployee);
         return tasksPerEmployee.entrySet().stream()
                 .filter(el->el.getValue().size()>overload)
