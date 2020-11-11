@@ -1,6 +1,7 @@
 package com.app.tobeprecise.controllers;
 
 
+
 import com.app.tobeprecise.dtos.EmployeeDTO;
 import com.app.tobeprecise.dtos.EmployeeManagerDTO;
 import com.app.tobeprecise.dtos.ReportDTO;
@@ -46,10 +47,4 @@ public class EmployeeController {
     public ResponseEntity<List<EmployeeManagerDTO>> getOverloadedEmployees(){
         return new ResponseEntity<>(employeeService.findOverloadedEmployeesPerManager(), HttpStatus.OK);
     }
-
-
-
-
-
-
 }

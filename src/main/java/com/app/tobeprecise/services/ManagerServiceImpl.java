@@ -5,11 +5,13 @@ import com.app.tobeprecise.dtos.ReportDTO;
 import com.app.tobeprecise.dtos.TaskDTO;
 import com.app.tobeprecise.entities.Employee;
 import com.app.tobeprecise.entities.Manager;
+import com.app.tobeprecise.entities.Report;
 import com.app.tobeprecise.entities.Task;
 import com.app.tobeprecise.exeptions.ManagerNotFoundException;
 import com.app.tobeprecise.interfaces.IManagerService;
 import com.app.tobeprecise.repos.EmployeeRepository;
 import com.app.tobeprecise.repos.ManagerRepository;
+import com.app.tobeprecise.repos.ReportRepository;
 import com.app.tobeprecise.repos.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,8 @@ public class ManagerServiceImpl  implements  IManagerService {
     private EmployeeRepository employeeRepository;
     @Autowired
     private TaskRepository taskRepository;
+    @Autowired
+    private ReportRepository reportRepository;
 
     @Override
     public ManagerDTO save(Manager m) {
@@ -35,10 +39,8 @@ public class ManagerServiceImpl  implements  IManagerService {
 
     @Override
     public List<ReportDTO> findReportsByManager(long managerId) {
-        Manager manager = managerRepository.findById(managerId).orElseThrow(ManagerNotFoundException::new);
-        return manager.getEmployees().stream()
-                .map(Employee::getReports)
-                .flatMap(List::stream)
+        List<Report> reports = reportRepository.findReportsByManagerId(managerId);
+        return reports.stream()
                 .map(report -> new ReportDTO(report.getText(), report.getDate()))
                 .collect(Collectors.toList());
     }

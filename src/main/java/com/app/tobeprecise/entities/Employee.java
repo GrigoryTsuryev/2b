@@ -11,9 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "employees")
-@ToString
-public class Employee  {
-
+public class Employee{
 
     @Id
     @GeneratedValue
@@ -106,5 +104,14 @@ public class Employee  {
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

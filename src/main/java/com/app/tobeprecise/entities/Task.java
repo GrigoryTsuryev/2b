@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -15,7 +14,6 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "tasks")
 @EqualsAndHashCode
-@ToString
 public class Task  {
 
     @Id
@@ -77,4 +75,13 @@ public class Task  {
         this.employee = employee;
     }
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "taskId=" + taskId +
+                ", text='" + text + '\'' +
+                ", assignDate=" + assignDate +
+                ", dueDate=" + dueDate +
+                '}';
+    }
 }
